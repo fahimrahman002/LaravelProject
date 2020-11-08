@@ -24,12 +24,12 @@
                 <!-- Contact Form - Enter your email address on line 19 of the mail/contact_me.php file to make this form work. -->
                 <!-- WARNING: Some web hosts do not allow emails to be sent through forms to common mail hosts like Gmail or Yahoo. It's recommended that you use a private domain email address! -->
                 <!-- To use the contact form, your site must be on a live web host with PHP! The form will not work locally! -->
-                <form action="{{ route('blog-post') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('storepost') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="control-group">
                         <div class="form-group floating-label-form-group controls">
                             <label>Title</label>
-                            <input type="text" class="form-control" placeholder="Title" required
+                            <input type="text" name="title" class="form-control" placeholder="Title" required
                                 data-validation-required-message="Please enter a title.">
                             <p class="help-block text-danger"></p>
                         </div>
@@ -51,7 +51,7 @@
                     <div class="control-group">
                         <div class="form-group floating-label-form-group controls">
                             <label>Blog</label>
-                            <textarea rows="5" class="form-control" placeholder="Your Blog" required
+                            <textarea rows="5" name="post" class="form-control" placeholder="Your Blog" required
                                 data-validation-required-message="Please enter Your Blog."></textarea>
                             <p class="help-block text-danger"></p>
                         </div>
@@ -59,7 +59,7 @@
                     <div class="control-group">
                         <div class="form-group floating-label-form-group controls">
                             <label>Image</label>
-                            <input type="file" class="form-control" placeholder="Image" required
+                            <input type="file" name="image" class="form-control" placeholder="Image"
                                 data-validation-required-message="You have to select an image.">
                             <p class="help-block text-danger"></p>
                         </div>

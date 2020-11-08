@@ -27,3 +27,4 @@ Route::post('/contact_form_fill_up', [HomeController::class, 'contact_us'])->nam
 
 //Posts crud are here
 Route::get('/writepost', [PostController::class, 'writepost'])->name('writepost');
+Route::post('/storepost', [PostController::class, 'storepost'])->name('storepost');
