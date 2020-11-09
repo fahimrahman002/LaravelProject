@@ -22,17 +22,17 @@ class PostController extends Controller
         );
         $data = array();
         $data['title'] = $request->title;
-        $data['category_id'] = $request->category_id;
+        $data['category_id'] = (int)$request->category_id;
         $data['details'] = $request->post;
         $image = $request->file('image');
         if ($image) {
-            $dateTime = now();
+            $dateTime = now()->format('Y-m-d-H-i-s');
             $originalname = $image->getClientOriginalName();
             $ext = strtolower($image->getClientOriginalExtension());
-            $imageFullName = $originalname . $dateTime . '.' . $ext;
+            $imageFullName = $dateTime . $originalname;
             $uploadPath = 'public/frontend/img/posts/';
             $imageUrl = $uploadPath . $imageFullName;
-            $success = $image->move(public_path('frontend') . '/img/', $imageFullName);
+            $success = $image->move(public_path('frontend') . '/img/post/', $imageFullName);
             $data['image'] = $imageUrl;
             DB::table('posts')->insert($data);
             $notification = array('message' => 'Your blog has been posted successfully', 'alert-type' => 'success');
